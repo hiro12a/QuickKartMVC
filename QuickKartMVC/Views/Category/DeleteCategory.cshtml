@@ -1,0 +1,22 @@
+﻿@model QuickKartDataAccessLayer.Models.Categories
+
+@{
+    ViewData["Title"] = "DeleteCategory";
+}
+
+<form method="post" asp-action="SaveDeleteCategory">
+    <input asp-for="CategoryId" hidden/>
+    <div class="border p-3 mt-4" style="background:white">
+        <div class="mb-3">
+        <h2 class="text-primary">Delete Category</h2>
+        <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="CategoryName"></label>
+            <input disabled asp-for="CategoryName" class="form-control"/>
+            <span asp-validation-for="CategoryName" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Delete</button>
+        <a asp-controller="Category" asp-action="ViewCategory" class="btn btn-secondary" style="width:150px">Back</a>
+    </div>
+</form>

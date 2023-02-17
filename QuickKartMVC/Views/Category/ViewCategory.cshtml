@@ -1,0 +1,40 @@
+﻿@model IEnumerable<QuickKartDataAccessLayer.Models.Categories>
+
+@{
+    ViewData["Title"] = "ViewCategory";
+}
+
+<div class="container" style="background:white">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Categories</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="CreateCategory" class="btn btn-primary">Create Categories</a>
+        </div>
+    </div>
+    <br />
+</div>
+<table class="table table-bordered table-striped" style="width:100%; background:white">
+    <thead>
+        <tr>
+            <th>
+                Category Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var items in Model)
+        {
+            <tr>
+                <td>
+                    @items.CategoryName
+                </td>
+                <td class="text-center">
+                    <a asp-controller="Category" asp-action="EditCategory" asp-route-id="@items.CategoryId">Edit</a> |
+                    <a asp-controller="Category" asp-action="DeleteCategory" asp-route-id="@items.CategoryId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

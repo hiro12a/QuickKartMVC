@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "ViewProduct";
+}
+@model IEnumerable<QuickKartDataAccessLayer.Models.Products>
+<div class="container p-3" style="background:white">
+    <div class="row pt-1">
+        <div class="col-6">
+            <h2 class="text-primary">Product List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Product" asp-action="AddProduct" class="btn btn-primary" style="width:150px">Create</a>
+        </div>
+    </div>
+</div>
+<table class="table table-bordered table-striped" style="width:100%; background: white;">
+    <thead style="background: gray;">
+        <tr>
+            <th>
+                Product Id
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Category Id
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Quantity Available
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>             
+                <td witdh="50%">
+                    @obj.ProductId
+                </td>
+                <td witdh="50%">
+                    @obj.ProductName
+                </td>
+                <td witdh="50%">
+                    @obj.CategoryId
+                </td>
+                <td witdh="50%">
+                    @obj.Price
+                </td>
+                <td witdh="50%">
+                    @obj.QuantityAvailable
+                </td>
+                <td>
+                    @Html.ActionLink("Update","UpdateProduct", new {id = obj.ProductId})                    
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteProduct", new { ProductId = obj.ProductId, ProductName = obj.ProductName, CategoryId = obj.CategoryId, Price = obj.Price, QuantityAvailable = obj.QuantityAvailable })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

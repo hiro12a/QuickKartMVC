@@ -1,0 +1,44 @@
+﻿@model Products
+@{
+    ViewData["Title"] = "DeleteProduct";
+}
+<form class="Post" asp-action="SavedDeleteProduct">
+    <input asp-for="ProductId" hidden />
+    <div class="border p-3 mt-4" style="background:white">
+        <div class="row pb-2">
+            <h2>Delete Product</h2>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductId"></label>
+            <input disabled asp-for="ProductId" class="form-control" />
+            <span asp-validation-for="ProductId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductName"></label>
+            <input disabled asp-for="ProductName" class="form-control" />
+            <span asp-validation-for="ProductName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CategoryId"></label>
+            <input disabled asp-for="CategoryId" class="form-control" />
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Price"></label>
+            <input disabled asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="QuantityAvailable"></label>
+            <input disabled asp-for="QuantityAvailable" class="form-control" />
+            <span asp-validation-for="QuantityAvailable" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Delete</button>
+        <a asp-action="ViewProduct" class="btn btn-secondary" style="with:150px">Back to List</a>
+    </div>
+</form>
+@section Scripts{
+   @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

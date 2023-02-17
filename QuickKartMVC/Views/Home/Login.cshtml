@@ -1,0 +1,41 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextaccessor
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="center">
+    <h1>Login</h1>       
+    <form asp-action="CheckRole">
+        <div class="txt_field">            
+            @{
+                if(httpContextaccessor.HttpContext.Request.Cookies["UserId"] != null)
+                {
+                    @Html.TextBox("name", httpContextaccessor.HttpContext.Request.Cookies["UserId"]);
+                }
+                else
+                {
+                    @Html.TextArea("name",null, new { @class = "form-control" , @placeholder = "UserName" })
+                }
+            }
+        </div>
+        <div class="txt_field">
+            @{
+                if(httpContextaccessor.HttpContext.Request.Cookies["Password"] != null)
+                {
+                    @Html.Password("pwd", httpContextaccessor.HttpContext.Request.Cookies["Password"]);
+                }
+                else
+                {
+                    @Html.Password("pwd",null, new { @class = "form-control" , @placeholder = "Password" })
+                }
+            }
+        </div>
+        <input type="submit" class="btn btn-primary" value="Login"/>
+        <br />
+        <div class="text-center">
+            <input type="checkbox" name="RememberMe" /> Remember Me<br />
+        </div>
+        <div class="sign_up">         
+            Not a member? <a asp-controller="User" asp-action="RegisterUser">Sign Up</a>
+        </div>
+    </form>
+</div>
